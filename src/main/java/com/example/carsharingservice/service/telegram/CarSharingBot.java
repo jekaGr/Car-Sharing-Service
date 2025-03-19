@@ -1,5 +1,6 @@
 package com.example.carsharingservice.service.telegram;
 
+import com.example.carsharingservice.exception.TelegramNotificationException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -34,12 +35,12 @@ public class CarSharingBot extends TelegramLongPollingBot {
 
             SendMessage message = new SendMessage();
             message.setChatId(String.valueOf(chatId));
-            message.setText("Ви написали: " + messageText);
+            message.setText("You wrote: " + messageText);
 
             try {
                 execute(message);
             } catch (TelegramApiException e) {
-                e.printStackTrace();
+                throw new TelegramNotificationException("Error executing Telegram message",e);
             }
         }
     }
@@ -52,7 +53,7 @@ public class CarSharingBot extends TelegramLongPollingBot {
         try {
             execute(message);
         } catch (TelegramApiException e) {
-            e.printStackTrace();
+            throw new TelegramNotificationException("Error executing Telegram message",e);
         }
     }
 }

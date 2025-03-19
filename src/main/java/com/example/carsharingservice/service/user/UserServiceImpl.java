@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new EntityNotFoundException("Role with name "
                         + requestDto.getRoleName() + " not found"));
 
-        Set<Role> roles = new HashSet<>(); // Створіть змінну колекцію
+        Set<Role> roles = new HashSet<>();
         roles.add(role);
         user.setRoles(roles);
         return userMapper.toUserResponse(userRepository.save(user));
@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
         if (principal instanceof User user) {
             return user;
         } else if (principal instanceof UserDetails userDetails) {
-            return userRepository.findByEmail(userDetails.getUsername())
+            return userRepository.findByEmailWithRoles(userDetails.getUsername())
                             .orElseThrow(() -> new EntityNotFoundException("User not found"));
         } else {
             throw new EntityNotFoundException("Error when getting current user");
@@ -75,24 +75,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto updateMe(UserRegistrationRequestDto requestDto) {
+        User user = getCurrentUser();
+        userMapper.updateUserFromDto(requestDto, user);
+        user.setPassword(passwordEncoder.encode(requestDto.getPassword()));
+        userRepository.save(user);
+        return userMapper.toUserResponse(user);
+    }
+
+    private User getCurrentUser() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof User user) {
-            user.setEmail(requestDto.getEmail());
-            user.setFirstName(requestDto.getFirstName());
-            user.setLastName(requestDto.getLastName());
-            user.setPassword(requestDto.getPassword());
-            return userMapper.toUserResponse(user);
+            return user;
         } else if (principal instanceof UserDetails userDetails) {
-            User user = userRepository.findByEmail(userDetails.getUsername()).orElseThrow(
-                    () -> new EntityNotFoundException("User not found"));
-            user.setEmail(requestDto.getEmail());
-            user.setFirstName(requestDto.getFirstName());
-            user.setLastName(requestDto.getLastName());
-            user.setPassword(requestDto.getPassword());
-            userRepository.save(user);
-            return userMapper.toUserResponse(user);
+            return userRepository.findByEmailWithRoles(userDetails.getUsername())
+                    .orElseThrow(() -> new EntityNotFoundException("User not found"));
         } else {
             throw new EntityNotFoundException("Error when getting current user");
         }
     }
+
 }

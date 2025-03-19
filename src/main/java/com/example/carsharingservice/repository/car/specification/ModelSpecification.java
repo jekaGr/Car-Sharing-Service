@@ -26,6 +26,3 @@ public class ModelSpecification implements SpecificationProvider<Car> {
                 );
     }
 }
-
-
-

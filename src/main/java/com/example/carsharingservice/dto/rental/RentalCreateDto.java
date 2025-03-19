@@ -1,6 +1,6 @@
 package com.example.carsharingservice.dto.rental;
 
-import com.example.carsharingservice.validation.ValidDateFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
@@ -16,12 +16,12 @@ import lombok.experimental.Accessors;
 public class RentalCreateDto {
     @NotNull
     @PastOrPresent
-    @ValidDateFormat
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate rentalDate;
 
     @NotNull
     @FutureOrPresent
-    @ValidDateFormat
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate returnDate;
 
     @NotNull

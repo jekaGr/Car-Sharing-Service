@@ -6,6 +6,7 @@ import com.example.carsharingservice.dto.user.UserResponseDto;
 import com.example.carsharingservice.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(config = MapperConfig.class)
 public interface UserMapper {
@@ -14,6 +15,7 @@ public interface UserMapper {
     @Mapping(target = "id", ignore = true)
     User toUser(UserRegistrationRequestDto createUserRequestDto);
 
-    @Mapping(target = "id",source = "id")
-    User toUserFromDto(UserResponseDto createUserResponseDto);
+    @Mapping(target = "password", ignore = true)
+    void updateUserFromDto(UserRegistrationRequestDto requestDto, @MappingTarget User user);
+
 }

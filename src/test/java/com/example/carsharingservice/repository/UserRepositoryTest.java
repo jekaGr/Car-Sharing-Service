@@ -53,7 +53,7 @@ class UserRepositoryTest {
 
     @Test
     void findByEmailValidUser_returnUser() {
-        User foundUser = userRepository.findByEmail("email@email.com").orElse(null);
+        User foundUser = userRepository.findByEmailWithRoles("email@email.com").orElse(null);
         assertNotNull(foundUser);
         assertEquals("firstName", foundUser.getFirstName());
         assertEquals("lastName", foundUser.getLastName());
@@ -61,7 +61,7 @@ class UserRepositoryTest {
 
     @Test
     void findByEmailInvalidUser_notFound() {
-        Optional<User> foundUser = userRepository.findByEmail("invalid@email.com");
+        Optional<User> foundUser = userRepository.findByEmailWithRoles("invalid@email.com");
         assertTrue(foundUser.isEmpty());
     }
 }

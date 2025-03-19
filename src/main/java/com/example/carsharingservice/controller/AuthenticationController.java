@@ -41,4 +41,3 @@ public class AuthenticationController {
         return authenticationService.authenticate(request);
     }
 }
-

@@ -140,12 +140,20 @@ class UserServiceTest {
         requestDto.setFirstName("NewFirstName");
         requestDto.setLastName("NewLastName");
         requestDto.setPassword("NewPassword");
+
         UserResponseDto expectedResponseDto = new UserResponseDto();
         expectedResponseDto.setEmail(requestDto.getEmail());
+        expectedResponseDto.setFirstName(requestDto.getFirstName());
+        expectedResponseDto.setLastName(requestDto.getLastName());
         User user = new User();
+        user.setEmail("old@email.com");
+        user.setFirstName("OldFirstName");
+        user.setLastName("OldLastName");
+        user.setPassword("OldPassword");
 
         when(securityContext.getAuthentication()).thenReturn(authentication);
         when(authentication.getPrincipal()).thenReturn(user);
+        when(passwordEncoder.encode(requestDto.getPassword())).thenReturn("EncodedNewPassword");
         when(userMapper.toUserResponse(user)).thenReturn(expectedResponseDto);
 
         // When
@@ -153,10 +161,12 @@ class UserServiceTest {
 
         // Then
         assertEquals(expectedResponseDto, actualResponseDto);
-        assertEquals(requestDto.getEmail(), user.getEmail());
-        assertEquals(requestDto.getFirstName(), user.getFirstName());
-        assertEquals(requestDto.getLastName(), user.getLastName());
-        assertEquals(requestDto.getPassword(), user.getPassword());
+        verify(userMapper).updateUserFromDto(requestDto, user);
+        verify(passwordEncoder).encode(requestDto.getPassword());
+        assertEquals("new@email.com", actualResponseDto.getEmail());
+        assertEquals("NewFirstName", actualResponseDto.getFirstName());
+        assertEquals("NewLastName", actualResponseDto.getLastName());
+        verify(userRepository).save(user);
     }
 
     @Test

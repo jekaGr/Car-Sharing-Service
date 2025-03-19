@@ -7,9 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface PaymentService {
-    public PaymentResponseDto createPayment(@Valid PaymentRequestDto requestDto);
+    PaymentResponseDto createPayment(@Valid PaymentRequestDto requestDto);
 
-    public Page<PaymentResponseDto> getAllPaymentsByUserId(Long userId, Pageable pageable);
+    Page<PaymentResponseDto> getAllPaymentsByUserId(Long userId, Pageable pageable);
 
-    public void checkSuccessfulPayment(Long paymentId);
+    void checkSuccessfulPayment(Long paymentId);
 }
