@@ -1,0 +1,546 @@
+{
+  "info": {
+    "_postman_id": "4c68322b-5e42-4046-ac4f-dc68f895a1a4",
+    "name": "cc",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "15533228"
+  },
+  "item": [
+    {
+      "name": "by_Id",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsImlhdCI6MTc0MDg1NzQ0NiwiZXhwIjoxNzQwODYxMDQ2fQ.0HUfw7TTcMz6v-6k9UmnIkDESJlyNu--zPgaNGLCZec",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/books/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "del_by_id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/books/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "books",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "categoriesById",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGlzLmFsaXNvbkBleGFtcGxlLmNvbSIsImlhdCI6MTczOTE3Njc1NywiZXhwIjoxNzM5MTgwMzU3fQ.BJGQuZnvG-ztxjW81EF1RjDAkLoZY744HP4Z6qoVTZU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/categories/1/books",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "categories",
+            "1",
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "loginAdmin",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"alis.alison@example.com\",\r\n  \"password\": \"securePassword125\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "loginUser",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"joh.doe@example.com\",\r\n  \"password\": \"securePassword1234\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "deleteCartItem",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huLmRvZUBleGFtcGxlLmNvbSIsImlhdCI6MTczOTM1OTI3OSwiZXhwIjoxNzM5MzYyODc5fQ.VAIrMzheCS-C6tVzFojMOIKtZuwHPfGDhCsxQYeJuOQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/cart/items/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cart",
+            "items",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "deleteCar",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGlzLmFsaXNvbkBleGFtcGxlLmNvbSIsImlhdCI6MTc0MTExOTg3MCwiZXhwIjoxNzQxMTIzNDcwfQ.LvN3RniJSQRTOrifZxQuxOM5rQRYCsFPvffa9Akv6hI",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"model\":\"X5\",\r\n  \"brand\":\"BMW\",\r\n  \"type\":\"SEDAN\",\r\n  \"inventory\":1,\r\n  \"dailyFee\":19.99\r\n}\r\n\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/cars/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cars",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "createCar",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGlzLmFsaXNvbkBleGFtcGxlLmNvbSIsImlhdCI6MTc0MTExOTg3MCwiZXhwIjoxNzQxMTIzNDcwfQ.LvN3RniJSQRTOrifZxQuxOM5rQRYCsFPvffa9Akv6hI",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"model\":\"X5\",\r\n  \"brand\":\"BMW\",\r\n  \"type\":\"SEDAN\",\r\n  \"inventory\":1,\r\n  \"dailyFee\":19.99\r\n}\r\n\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/cars",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cars"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "createPaymtnt",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGlzLmFsaXNvbkBleGFtcGxlLmNvbSIsImlhdCI6MTc0MTExOTg3MCwiZXhwIjoxNzQxMTIzNDcwfQ.LvN3RniJSQRTOrifZxQuxOM5rQRYCsFPvffa9Akv6hI",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"model\":\"X5\",\r\n  \"brand\":\"BMW\",\r\n  \"type\":\"SEDAN\",\r\n  \"inventory\":1,\r\n  \"dailyFee\":19.99\r\n}\r\n\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/cars",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cars"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "createRental",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25zLmRvZUBleGFtcGxlLmNvbSIsImlhdCI6MTc0MTcwNzI2OCwiZXhwIjoxNzQxNzEwODY4fQ.3--43c0CZTXx6m0b4_hyFOFt2Ai0m_ZbQll0oExkaN8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"rentalDate\":\"2025-03-11\",\r\n  \"returnDate\":\"2025-03-12\",\r\n  \"carId\":1\r\n}\r\n\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/rentals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rentals"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "completeRental",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25zLmRvZUBleGFtcGxlLmNvbSIsImlhdCI6MTc0MTcwNzI2OCwiZXhwIjoxNzQxNzEwODY4fQ.3--43c0CZTXx6m0b4_hyFOFt2Ai0m_ZbQll0oExkaN8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"rentalDate\":\"2025-03-11\",\r\n  \"returnDate\":\"2025-03-12\",\r\n  \"carId\":1\r\n}\r\n\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/rentals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rentals"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "updateRoleUser",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGlzLmFsaXNvbkBleGFtcGxlLmNvbSIsImlhdCI6MTc0MTcwNzAyMiwiZXhwIjoxNzQxNzEwNjIyfQ.zWi5_VWaLUs0e97PxSeHNHPXP7osmuCBtWGx_eY-UlY",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"roleName\":\"CUSTOMER\"\r\n}\r\n\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/users/2/role",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "users",
+            "2",
+            "role"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "userRegister",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"joh.doe@example.com\",\r\n  \"password\": \"securePassword1234\",\r\n  \"repeatPassword\": \"securePassword1234\",\r\n  \"firstName\": \"Joh\",\r\n  \"lastName\": \"Doe\",\r\n  \"shippingAddress\": \"123 Main St, City, Country\"\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/auth/registration",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "auth",
+            "registration"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getAllCar(Customer)",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2guZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzQxOTU0MjA4LCJleHAiOjE3NDE5NTc4MDh9.SjdHyOtiETgCts7EBQmEZRlM2XXSpzBV6p2LihgyzHg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"joh.doe@example.com\",\r\n  \"password\": \"securePassword1234\",\r\n  \"repeatPassword\": \"securePassword1234\",\r\n  \"firstName\": \"Joh\",\r\n  \"lastName\": \"Doe\",\r\n  \"shippingAddress\": \"123 Main St, City, Country\"\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/cars",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cars"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "specifscatsonAllCar(Customer)",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2guZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzQyMjA0OTMyLCJleHAiOjE3NDIyMDg1MzJ9.U4OaIJWeOdAZDPEK0_VP_6Iv4KDFjpIspM9O5qdFgAw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"joh.doe@example.com\",\r\n  \"password\": \"securePassword1234\",\r\n  \"repeatPassword\": \"securePassword1234\",\r\n  \"firstName\": \"Joh\",\r\n  \"lastName\": \"Doe\",\r\n  \"shippingAddress\": \"123 Main St, City, Country\"\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/cars/search?models=BMW&brands=X5&types=SEDAN",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "cars",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "models",
+              "value": "BMW"
+            },
+            {
+              "key": "brands",
+              "value": "X5"
+            },
+            {
+              "key": "types",
+              "value": "SEDAN"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

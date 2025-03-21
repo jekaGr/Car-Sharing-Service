@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-users-to-users-table
+      author: jekaG
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column: {name: "email", value: "alis.alison@example.com"}
+              - column: {name: "password",
+                         value: "$2a$10$pMqLbyYqRFZmvwzNHs0d3eJJu2Jdvu1Ptu3BIXtcWQ4fhUzJLYG1m"
+              } # securePassword125
+              - column: {name: "first_name", value: "Alis"}
+              - column: {name: "last_name", value: "Alison"}
+        - insert:
+            tableName: users_roles
+            columns:
+              - column: {name: "user_id", value: "1"}
+              - column: {name: "role_id", value: "1"}
