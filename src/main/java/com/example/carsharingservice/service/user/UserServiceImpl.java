@@ -57,20 +57,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getMe() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (authentication == null) {
-            throw new EntityNotFoundException("Authentication context is null");
-        }
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof User user) {
-            return user;
-        } else if (principal instanceof UserDetails userDetails) {
-            return userRepository.findByEmailWithRoles(userDetails.getUsername())
-                            .orElseThrow(() -> new EntityNotFoundException("User not found"));
-        } else {
-            throw new EntityNotFoundException("Error when getting current user");
-        }
+        return getCurrentUser();
     }
 
     @Override
@@ -83,7 +70,12 @@ public class UserServiceImpl implements UserService {
     }
 
     private User getCurrentUser() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null) {
+            throw new EntityNotFoundException("Authentication context is null");
+        }
+        Object principal = authentication.getPrincipal();
         if (principal instanceof User user) {
             return user;
         } else if (principal instanceof UserDetails userDetails) {
@@ -93,5 +85,4 @@ public class UserServiceImpl implements UserService {
             throw new EntityNotFoundException("Error when getting current user");
         }
     }
-
 }

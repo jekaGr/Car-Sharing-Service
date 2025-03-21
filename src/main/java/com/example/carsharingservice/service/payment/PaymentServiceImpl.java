@@ -16,12 +16,9 @@ import com.stripe.model.checkout.Session;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -57,12 +54,8 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Page<PaymentResponseDto> getAllPaymentsByUserId(Long userId, Pageable pageable) {
-        Page<Payment> paymentPage = paymentRepository.findAllByRental_UserId(userId, pageable);
-        List<PaymentResponseDto> dtoList = paymentPage.getContent().stream()
-                .map(paymentMapper::toDto)
-                .collect(Collectors.toList());
-        return new PageImpl<>(dtoList, paymentPage.getPageable(), paymentPage.getTotalElements());
-
+        return paymentRepository.findAllByRental_UserId(userId, pageable)
+                .map(paymentMapper::toDto);
     }
 
     @Override

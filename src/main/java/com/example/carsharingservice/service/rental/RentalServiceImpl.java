@@ -62,7 +62,7 @@ public class RentalServiceImpl implements RentalService {
             rentalsPage = rentalRepository
                     .findAllByUserIdAndActualReturnDateIsNotNull(pageable, userId);
         }
-        return rentalMapper.toDtoPage(rentalsPage);
+        return rentalsPage.map(rentalMapper::toRentalResponseDto);
     }
 
     @Override

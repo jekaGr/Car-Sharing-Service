@@ -119,8 +119,7 @@ class RentalServiceTest {
         Pageable pageable = Pageable.unpaged();
         when(rentalRepository.findAllByUserIdAndActualReturnDateIsNull(pageable,
                 1L)).thenReturn(new PageImpl<>(java.util.List.of(rental)));
-        when(rentalMapper.toDtoPage(any())).thenReturn(new PageImpl<>(
-                java.util.List.of(new RentalResponseDto())));
+        when(rentalMapper.toRentalResponseDto(any())).thenReturn(new RentalResponseDto());
 
         Page<RentalResponseDto> responseDtoPage = rentalService.findAll(pageable, 1L, true);
 
@@ -132,8 +131,7 @@ class RentalServiceTest {
         Pageable pageable = Pageable.unpaged();
         when(rentalRepository.findAllByUserIdAndActualReturnDateIsNotNull(pageable,
                 1L)).thenReturn(new PageImpl<>(java.util.List.of(rental)));
-        when(rentalMapper.toDtoPage(any())).thenReturn(new PageImpl<>(
-                java.util.List.of(new RentalResponseDto())));
+        when(rentalMapper.toRentalResponseDto(any())).thenReturn(new RentalResponseDto());
 
         Page<RentalResponseDto> responseDtoPage = rentalService.findAll(pageable,
                 1L, false);
